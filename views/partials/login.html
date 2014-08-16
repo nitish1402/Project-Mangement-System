@@ -5,21 +5,23 @@
         <div id="login-wraper">
             <form class="form login-form">
                 <legend>Sign in to <span class="blue">PMS</span></legend>
+                {{test}}
 
                 <div class="body">
                     <label>Username</label>
-                    <input type="text">
+                    <input type="text" ng-model="login.name">
+
+                    {{name}}
 
                     <label>Password</label>
-                    <input type="password">
+                    <input type="password" ng-model="login.password">
+
+                    {{password}}
                 </div>
 
                 <div class="footer">
-                    <label class="checkbox inline">
-                        <input type="checkbox" id="inlineCheckbox1" value="option1"> Remember me
-                    </label>
 
-                    <button type="submit" class="btn btn-success">Login</button>
+                    <button class="btn btn-success" ng-click="logIn(login.name, login.password)">Login</button>
                 </div>
 
             </form>
@@ -28,5 +30,5 @@
     </div>
 
     <footer class="white navbar-fixed-bottom">
-      Don't have an account yet? <a href="register.html" class="btn btn-black">Register</a>
+      Don't have an account yet? <a href="" class="btn btn-black">Register</a>
     </footer>
