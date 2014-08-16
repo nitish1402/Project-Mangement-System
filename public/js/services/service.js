@@ -1,4 +1,6 @@
-
+var options = {};
+options.api = {};
+options.api.base_url = "http://localhost:8080";
 
 angular.module('myApp')
 .factory('AuthenticationService', function() {

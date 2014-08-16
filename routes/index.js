@@ -12,3 +12,8 @@ exports.partials = function (req, res) {
   console.log("name "+name);
   res.render('partials/' + name);
 };
+
+exports.Upartials = function (req, res) {
+  var name = req.params.name+".html";
+  res.render('partials/user/' + name);
+};

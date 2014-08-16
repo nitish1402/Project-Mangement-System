@@ -36,6 +36,7 @@ function AdminUserCtrl($scope, $location, $window, UserService, AuthenticationSe
             if (username !== undefined && password !== undefined) {
 
                 UserService.logIn(username, password).success(function(data) {
+                  console.log("logged");
                     AuthenticationService.isLogged = true;
                     $window.sessionStorage.token = data.token;
                     $location.path("/user");

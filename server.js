@@ -10,6 +10,8 @@ var bodyParser     = require('body-parser'); //Middle ware for parsing data like
 var methodOverride = require('method-override'); //provide PUT and DELETE where client doesn't support it
 var morgan         = require('morgan'); //logging into the console
 var routes         = require('./routes'); //requesting services from routes folder
+var user_ser       = require('./routes/services/user');
+var services       = require('./routes/services/services');
 var port           = process.env.PORT || 8080; //setting port
 var router         = express.Router(); //using express router
 var app = module.exports = express();
@@ -37,13 +39,14 @@ if ('development' == env) {
 
 router.get('/', routes.index);
 router.get('/partials/:name', routes.partials);
+router.get('/partials/user/:name', routes.Upartials);
 
 /*
 router.get('/services/product/:id', services.product);
 router.put('/services/product/:id', services.editProduct);
 router.delete('/services/product/:id/edit/:id', services.deleteProduct)
 */
-
+router.post('/user/signin', user_ser.signin); 
 router.get('*', routes.index);
 
 
