@@ -6,6 +6,6 @@ var ser = require('./services');
 
 exports.signin = function(req,res)
 {
-  var sql = 'SELECT * from login WHERE=$1';
+  var sql = 'SELECT * from login WHERE username=$1';
   ser.login(req,res,sql);
 }

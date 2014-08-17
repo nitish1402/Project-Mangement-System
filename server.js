@@ -12,8 +12,10 @@ var morgan         = require('morgan'); //logging into the console
 var routes         = require('./routes'); //requesting services from routes folder
 var user_ser       = require('./routes/services/user');
 var services       = require('./routes/services/services');
+var secret         = require('./routes/services/config');
 var port           = process.env.PORT || 8080; //setting port
 var router         = express.Router(); //using express router
+var expressJwt     = require('express-jwt');
 var app = module.exports = express();
 // ===============================================
 
@@ -22,6 +24,7 @@ var app = module.exports = express();
 */
 
 // all environments
+app.use('/user', expressJwt({secret: secret.secret}))
 app.use(bodyParser.json()); // parse application/json   // pull information from html in POST
 app.use(methodOverride());                        // simulate DELETE and PUT
 //app.use(morgan('dev')); 					                // log every request to the console
@@ -46,7 +49,7 @@ router.get('/services/product/:id', services.product);
 router.put('/services/product/:id', services.editProduct);
 router.delete('/services/product/:id/edit/:id', services.deleteProduct)
 */
-router.post('/user/signin', user_ser.signin); 
+router.post('/user/signin', user_ser.signin);
 router.get('*', routes.index);
 
 
